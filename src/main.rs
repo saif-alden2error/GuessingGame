@@ -2,6 +2,7 @@ use std::io;
 use rand::Rng;
 fn main() {
 let secret_number = rand::thread_rng().gen_range(1..100);
+let mut  tries:u32 = 0;
 loop {
 println!("Guess a number ");
 let mut input = String::new();
@@ -10,7 +11,9 @@ io::stdin()
 expect("Error To read message");
 let inputnumber:i32 = input.trim().parse().expect("Errr");
 println!("You Guessed :{}",input);
+tries = tries +1;
 if inputnumber == secret_number {
+    println!("Tries = {}",tries);
     println!("Nice Guess , Game over");
     break;
 } else if inputnumber > secret_number {
